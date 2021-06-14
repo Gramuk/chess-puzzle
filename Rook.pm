@@ -15,6 +15,7 @@ sub new {
    return $self;
 }
 
+# Function to move the rook, but actually just rolls the dice and flips the coin
 sub Move {
     my ($self) = @_;
 
@@ -45,6 +46,7 @@ sub Move {
     return ($self->{x_axis}, $self->{y_axis});
 }
 
+# Function that actually moves the rook
 sub CalculatePosition {
     my ($self, $direction, $distance) = @_;
 
@@ -58,9 +60,12 @@ sub CalculatePosition {
     }
 }
 
+
+# Quick helper function to fix our position when we run off the board
 sub CheckBoundary {
     my ($position) = @_;
 
+    # This was fun!  I had an if statement here and took me a "hot" minute to realize I needed a while loop since dice go up to 12
     while ($position > 7) {
         $position -= 8;
     }
